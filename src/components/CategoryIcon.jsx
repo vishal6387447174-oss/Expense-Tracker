@@ -1,0 +1,4 @@
+import * as Icons from 'lucide-react';
+const iconByCategory = { Food: 'Utensils', Shopping: 'ShoppingBag', Transport: 'CarFront', Entertainment: 'Clapperboard', Rent: 'House', Bills: 'ReceiptText', Health: 'HeartPulse', Education: 'GraduationCap', Travel: 'Plane', Subscription: 'Play', Income: 'CircleDollarSign', Investment: 'ChartNoAxesCombined' };
+const colors = { Food: 'orange', Shopping: 'pink', Transport: 'teal', Entertainment: 'purple', Rent: 'blue', Bills: 'yellow', Health: 'red', Education: 'violet', Travel: 'sky', Subscription: 'green', Income: 'green', Investment: 'teal', Other: 'gray' };
+export default function CategoryIcon({ category, icon, size = 17 }) { const I = Icons[icon || iconByCategory[category]] || Icons.ReceiptText; return <span className={`category-icon ${colors[category] || 'gray'}`}><I size={size} /></span>; }
