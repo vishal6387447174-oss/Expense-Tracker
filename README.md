@@ -108,13 +108,6 @@ The generated files are written to dist/.
 
 ## Vercel deployment
 
-Use these settings when deploying the repository through Netlify:
-
-- **Build command:** npm run build
-- **Publish directory:** dist
-- **Base directory:** leave blank
-- **Node version:** 18 or newer
-
 Because the app uses React Router with client-side routes, configure a single-page-app fallback on Netlify before deploying. Add a file at public/_redirects containing:
 
 ~~~text
