@@ -106,7 +106,7 @@ npm run preview
 
 The generated files are written to dist/.
 
-## Netlify deployment
+## Vercel deployment
 
 Use these settings when deploying the repository through Netlify:
 
