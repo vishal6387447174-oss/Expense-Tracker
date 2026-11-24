@@ -1,6 +1,6 @@
 export const seedState = {
   user: { name: 'Vishal Maurya', email: 'vishal@spendwise.app', currency: 'INR', monthlyIncome: 52000, country: 'India', streak: 18 },
-  settings: { theme: 'dark', aiInsights: true, emailReports: true, usageTracking: false, currency: 'INR' },
+  settings: { theme: 'dark', aiInsights: true, emailReports: true, usageTracking: false, currency: 'INR', workspaceType: 'individual' },
   transactions: [
     { id: 't1', date: '2026-09-21', description: 'Monthly salary', merchant: 'Acme Labs', category: 'Income', type: 'income', payment: 'Bank transfer', amount: 52000, status: 'Completed', icon: 'Landmark' },
     { id: 't2', date: '2026-09-21', description: 'Dinner with friends', merchant: 'Nori House', category: 'Food', type: 'expense', payment: 'UPI', amount: 840, status: 'Completed', icon: 'Utensils' },
@@ -52,3 +52,29 @@ export const seedState = {
 
 export const categories = ['Food', 'Shopping', 'Transport', 'Entertainment', 'Rent', 'Bills', 'Health', 'Education', 'Travel', 'Subscription', 'Investment', 'Other'];
 export const chartColors = ['#8b5cf6', '#14b8a6', '#f59e0b', '#ec4899', '#38bdf8', '#f97316'];
+
+export const expenseProfiles = {
+  student: {
+    key: 'student', label: 'Student tracker', shortLabel: 'Student', icon: 'GraduationCap',
+    accent: '#14b8a6', description: 'Make your allowance, stipend, and shared college spending last longer.',
+    focus: 'Allowance & campus life', categories: ['Food', 'Transport', 'Education', 'Entertainment', 'Shopping', 'Other'],
+    highlights: ['Track allowance, stipend, and part-time income', 'Split hostel, flatmate, and trip expenses', 'Stay ahead of books, fees, and daily spending'],
+    tip: 'Set a weekly limit for food and fun so your allowance lasts through the month.'
+  },
+  individual: {
+    key: 'individual', label: 'Individual tracker', shortLabel: 'Individual', icon: 'UserRound',
+    accent: '#8b5cf6', description: 'See your personal cash flow clearly and build healthier everyday money habits.',
+    focus: 'Personal money', categories,
+    highlights: ['Manage bills, subscriptions, and daily expenses', 'Create budgets for the categories that matter', 'Build savings goals and an emergency fund'],
+    tip: 'Your biggest win comes from giving every recurring bill a clear place in your monthly plan.'
+  },
+  business: {
+    key: 'business', label: 'Business tracker', shortLabel: 'Business', icon: 'BriefcaseBusiness',
+    accent: '#f59e0b', description: 'Separate business money, monitor operating costs, and understand your real profit.',
+    focus: 'Revenue & operations', categories: ['Sales', 'Payroll', 'Office', 'Marketing', 'Travel', 'Software', 'Taxes', 'Other'],
+    highlights: ['Record sales, invoices, and business income', 'Track payroll, tools, travel, and operating costs', 'Keep tax-ready records with clean categories'],
+    tip: 'Keep business and personal purchases separate to get a more reliable view of your profit.'
+  }
+};
+
+export const getExpenseProfile = (type) => expenseProfiles[type] || expenseProfiles.individual;

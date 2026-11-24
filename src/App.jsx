@@ -14,9 +14,10 @@ import SharedExpenses from './pages/SharedExpenses';
 import { CalendarPage, ReceiptScanner, Reports, Rewards, TravelExpenses } from './pages/MorePages';
 import { Notifications, Profile, Settings } from './pages/AccountPages';
 import NotFound from './pages/NotFound';
+import ExpenseTrackers from './pages/ExpenseTrackers';
 
 const privateRoutes = [
-  ['dashboard', Dashboard], ['transactions', Transactions], ['add-expense', AddExpense], ['income', ()=><AddExpense income/>], ['budgets', Budgets], ['analytics', Analytics], ['ai-insights', AIInsights], ['goals', Goals], ['subscriptions', Subscriptions], ['shared-expenses', SharedExpenses], ['receipt-scanner', ReceiptScanner], ['travel-expenses', TravelExpenses], ['reports', Reports], ['calendar', CalendarPage], ['rewards', Rewards], ['notifications', Notifications], ['profile', Profile], ['settings', Settings]
+  ['dashboard', Dashboard], ['trackers', ExpenseTrackers], ['transactions', Transactions], ['add-expense', AddExpense], ['income', ()=><AddExpense income/>], ['budgets', Budgets], ['analytics', Analytics], ['ai-insights', AIInsights], ['goals', Goals], ['subscriptions', Subscriptions], ['shared-expenses', SharedExpenses], ['receipt-scanner', ReceiptScanner], ['travel-expenses', TravelExpenses], ['reports', Reports], ['calendar', CalendarPage], ['rewards', Rewards], ['notifications', Notifications], ['profile', Profile], ['settings', Settings]
 ];
 function Protected(){return localStorage.getItem('spendwise-auth')==='true'?<AppShell/>:<Navigate to="/login" replace/>}
 export default function App(){return <Routes><Route path="/" element={<Landing/>}/><Route path="/login" element={<Login/>}/><Route path="/signup" element={<Signup/>}/><Route path="/forgot-password" element={<ForgotPassword/>}/><Route path="/onboarding" element={<Onboarding/>}/><Route element={<Protected/>}>{privateRoutes.map(([path,Page])=><Route path={path} element={<Page/>} key={path}/>)}</Route><Route path="*" element={<NotFound/>}/></Routes>}

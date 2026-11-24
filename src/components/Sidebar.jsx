@@ -1,9 +1,9 @@
-import { BarChart3, Bell, Bot, CalendarDays, ChevronLeft, CircleDollarSign, Crown, FileText, Goal, HandCoins, House, Landmark, LayoutDashboard, Plane, ReceiptText, ScanLine, Settings, SlidersHorizontal, Target, UsersRound, WalletCards } from 'lucide-react';
+import { BarChart3, Bell, Bot, BriefcaseBusiness, CalendarDays, ChevronLeft, CircleDollarSign, Crown, FileText, Goal, HandCoins, House, Landmark, LayoutDashboard, Plane, ReceiptText, ScanLine, Settings, SlidersHorizontal, Target, UsersRound, WalletCards } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 
 const primary = [
-  ['Dashboard', '/dashboard', LayoutDashboard], ['Transactions', '/transactions', ReceiptText], ['Add expense', '/add-expense', CircleDollarSign], ['Income', '/income', Landmark], ['Budgets', '/budgets', WalletCards], ['Analytics', '/analytics', BarChart3], ['AI Insights', '/ai-insights', Bot], ['Savings goals', '/goals', Target], ['Subscriptions', '/subscriptions', Crown]
+  ['Dashboard', '/dashboard', LayoutDashboard], ['Expense modes', '/trackers', BriefcaseBusiness], ['Transactions', '/transactions', ReceiptText], ['Add expense', '/add-expense', CircleDollarSign], ['Income', '/income', Landmark], ['Budgets', '/budgets', WalletCards], ['Analytics', '/analytics', BarChart3], ['AI Insights', '/ai-insights', Bot], ['Savings goals', '/goals', Target], ['Subscriptions', '/subscriptions', Crown]
 ];
 const secondary = [['Shared expenses', '/shared-expenses', UsersRound], ['Receipt scanner', '/receipt-scanner', ScanLine], ['Travel expenses', '/travel-expenses', Plane], ['Reports', '/reports', FileText], ['Calendar', '/calendar', CalendarDays], ['Rewards', '/rewards', Goal]];
 export default function Sidebar(){

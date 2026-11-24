@@ -26,6 +26,7 @@ export function AppProvider({ children }) {
   const deleteTransaction = (id) => { setState(s => ({ ...s, transactions: s.transactions.filter(t => t.id !== id) })); notify('Transaction deleted', 'neutral'); };
   const duplicateTransaction = (transaction) => { addTransaction({ ...transaction, id: undefined, description: `${transaction.description} (copy)` }); };
   const updateSettings = (patch) => { setState(s => ({ ...s, settings: { ...s.settings, ...patch } })); notify('Settings saved'); };
+  const setWorkspaceType = (workspaceType) => { setState(s => ({ ...s, settings: { ...s.settings, workspaceType } })); notify(`${workspaceType === 'business' ? 'Business' : workspaceType === 'student' ? 'Student' : 'Individual'} tracker selected`); };
   const addBudget = (budget) => { setState(s => ({ ...s, budgets: [{ ...budget, id: crypto.randomUUID(), amount: Number(budget.amount), spent: 0, days: 30, color: '#8b5cf6' }, ...s.budgets] })); notify('Budget created'); };
   const addGoal = (goal) => { setState(s => ({ ...s, goals: [{ ...goal, id: crypto.randomUUID(), target: Number(goal.target), saved: Number(goal.saved || 0), monthly: Number(goal.monthly || 0), emoji: '✦', color: '#8b5cf6' }, ...s.goals] })); notify('Savings goal created'); };
   const contributeGoal = (id, amount) => { setState(s => ({ ...s, goals: s.goals.map(g => g.id === id ? { ...g, saved: Math.min(g.target, g.saved + amount) } : g) })); notify('Goal contribution added'); };
@@ -41,7 +42,8 @@ export function AppProvider({ children }) {
     return { income, expense, balance: income - expense + 20890, savings: income - expense, savingsRate: income ? Math.round(((income - expense) / income) * 100) : 0, totalBudget, budgetUsed, budgetRemaining: totalBudget - budgetUsed };
   }, [state.transactions, state.budgets]);
 
-  const value = { state, metrics, toast, quickAddOpen, setQuickAddOpen, notify, addTransaction, deleteTransaction, duplicateTransaction, updateSettings, addBudget, addGoal, contributeGoal, addSubscription, markRead, resetDemo };
+  const workspaceType = state.settings.workspaceType || 'individual';
+  const value = { state, metrics, workspaceType, toast, quickAddOpen, setQuickAddOpen, notify, addTransaction, deleteTransaction, duplicateTransaction, updateSettings, setWorkspaceType, addBudget, addGoal, contributeGoal, addSubscription, markRead, resetDemo };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 export const useApp = () => useContext(AppContext);
