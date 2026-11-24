@@ -106,16 +106,6 @@ npm run preview
 
 The generated files are written to dist/.
 
-## Vercel deployment
-
-Because the app uses React Router with client-side routes, configure a single-page-app fallback on Netlify before deploying. Add a file at public/_redirects containing:
-
-~~~text
-/* /index.html 200
-~~~
-
-Then commit and push the file, or add the equivalent redirect in a netlify.toml file. This keeps routes such as /dashboard, /trackers, and /analytics working after a page refresh.
-
 ## Data and persistence
 
 This version is intentionally frontend-only. There is no API, database, server-side session, or payment integration.
